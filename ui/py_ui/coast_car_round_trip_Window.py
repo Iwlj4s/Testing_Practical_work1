@@ -16,7 +16,7 @@ class Ui_coast_car_round_trip_Window(object):
     def setupUi(self, coast_car_round_trip_Window):
         if not coast_car_round_trip_Window.objectName():
             coast_car_round_trip_Window.setObjectName(u"coast_car_round_trip_Window")
-        coast_car_round_trip_Window.resize(870, 517)
+        coast_car_round_trip_Window.setFixedSize(870, 517)
         self.centralwidget = QWidget(coast_car_round_trip_Window)
         self.centralwidget.setObjectName(u"centralwidget")
         self.coast_car_round_trip_label = QLabel(self.centralwidget)

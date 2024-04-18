@@ -16,7 +16,7 @@ class Ui_area_triangle_l_base_h_Window(object):
     def setupUi(self, area_triangle_l_base_h_Window):
         if not area_triangle_l_base_h_Window.objectName():
             area_triangle_l_base_h_Window.setObjectName(u"area_triangle_l_base_h_Window")
-        area_triangle_l_base_h_Window.resize(817, 525)
+        area_triangle_l_base_h_Window.setFixedSize(817, 460)
         font = QFont()
         font.setFamilies([u"Source Code Pro"])
         font.setPointSize(14)

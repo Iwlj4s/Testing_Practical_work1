@@ -16,7 +16,7 @@ class Ui_distance_conversion_from_miles_to_km_WIndow(object):
     def setupUi(self, distance_conversion_from_miles_to_km_WIndow):
         if not distance_conversion_from_miles_to_km_WIndow.objectName():
             distance_conversion_from_miles_to_km_WIndow.setObjectName(u"distance_conversion_from_miles_to_km_WIndow")
-        distance_conversion_from_miles_to_km_WIndow.resize(712, 322)
+        distance_conversion_from_miles_to_km_WIndow.setFixedSize(712, 322)
 
         self.centralwidget = QWidget(distance_conversion_from_miles_to_km_WIndow)
         self.centralwidget.setObjectName(u"centralwidget")

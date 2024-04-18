@@ -16,7 +16,7 @@ class Ui_volume_of_parallelepiped_Window(object):
     def setupUi(self, volume_of_parallelepiped_Window):
         if not volume_of_parallelepiped_Window.objectName():
             volume_of_parallelepiped_Window.setObjectName(u"volume_of_parallelepiped_Window")
-        volume_of_parallelepiped_Window.resize(800, 486)
+        volume_of_parallelepiped_Window.setFixedSize(800, 486)
         self.centralwidget = QWidget(volume_of_parallelepiped_Window)
         self.centralwidget.setObjectName(u"centralwidget")
 

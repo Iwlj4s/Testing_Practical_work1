@@ -16,7 +16,7 @@ class Ui_area_triangle_l_two_sides_size_angle_beetween_sides_Window(object):
     def setupUi(self, area_triangle_l_two_sides_size_angle_beetween_sides_Window):
         if not area_triangle_l_two_sides_size_angle_beetween_sides_Window.objectName():
             area_triangle_l_two_sides_size_angle_beetween_sides_Window.setObjectName(u"area_triangle_l_two_sides_size_angle_beetween_sides_Window")
-        area_triangle_l_two_sides_size_angle_beetween_sides_Window.resize(831, 470)
+        area_triangle_l_two_sides_size_angle_beetween_sides_Window.setFixedSize(831, 470)
 
         self.centralwidget = QWidget(area_triangle_l_two_sides_size_angle_beetween_sides_Window)
         self.centralwidget.setObjectName(u"centralwidget")

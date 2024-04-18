@@ -16,7 +16,7 @@ class Ui_volume_cylindre_base_radius_h_Window(object):
     def setupUi(self, volume_cylindre_base_radius_h_Window):
         if not volume_cylindre_base_radius_h_Window.objectName():
             volume_cylindre_base_radius_h_Window.setObjectName(u"volume_cylindre_base_radius_h_Window")
-        volume_cylindre_base_radius_h_Window.resize(800, 516)
+        volume_cylindre_base_radius_h_Window.setFixedSize(800, 500)
 
         self.centralwidget = QWidget(volume_cylindre_base_radius_h_Window)
         self.centralwidget.setObjectName(u"centralwidget")

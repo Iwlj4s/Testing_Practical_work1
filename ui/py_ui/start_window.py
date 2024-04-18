@@ -9,6 +9,8 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QMainWindow, QPushButton, QSizePolicy,
                                QVBoxLayout, QWidget)
 
+from utils.disable_buttons import disable_buttons, enable_buttons, open_window_and_enable_buttons
+
 from ui.py_ui.area_triangle_l_base_h_Window import Ui_area_triangle_l_base_h_Window
 from ui.py_ui.area_triangle_l_two_sides_size_angle_beetween_sides_Window import \
     Ui_area_triangle_l_two_sides_size_angle_beetween_sides_Window
@@ -29,7 +31,9 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
-        MainWindow.resize(1085, 855)
+        MainWindow.setFixedSize(1085, 855)
+        MainWindow.setStyleSheet("font-size: 15px;")  # Применение стиля к главному окну
+
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
 
@@ -164,91 +168,119 @@ class Ui_MainWindow(object):
 
         QMetaObject.connectSlotsByName(MainWindow)
 
+        self.buttons_to_disabled = [self.area_triangle_l_base_h,
+                                    self.area_triangle_l_two_sides_size_angle_beetween_sides,
+                                    self.resistance_parallel,
+                                    self.resistance_series_connected,
+                                    self.current_strength_electronic_circuit,
+                                    self.weight_conversion_from_pounds_to_kg,
+                                    self.coast_car_round_trip,
+                                    self.area_trapezoid_l_bases_h,
+                                    self.volume_cylindre_base_radius_h,
+                                    self.surface_area_cylinder_base_r_h,
+                                    self.volume_of_parallelepiped,
+                                    self.distance_conversion_from_miles_to_km]
+
     # 1. Open area_triangle_l_base_h Window
     def open_area_triangle_l_base_h_window(self):
+        disable_buttons(*self.buttons_to_disabled)
+        self.area_triangle_l_base_h.setDisabled(True)
         self.area_triangle_l_base_h_Window = QtWidgets.QMainWindow()
         self.ui = Ui_area_triangle_l_base_h_Window()
         self.ui.setupUi(self.area_triangle_l_base_h_Window)
-        self.area_triangle_l_base_h_Window.show()
+        open_window_and_enable_buttons(self.area_triangle_l_base_h_Window, *self.buttons_to_disabled)
 
     # 2. Open area_triangle_l_two_sides_size_angle_beetween_sides Window
     def open_area_triangle_l_two_sides_size_angle_beetween_sides_window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.area_triangle_l_two_sides_size_angle_beetween_sides_Window = QtWidgets.QMainWindow()
         self.ui = Ui_area_triangle_l_two_sides_size_angle_beetween_sides_Window()
         self.ui.setupUi(self.area_triangle_l_two_sides_size_angle_beetween_sides_Window)
-        self.area_triangle_l_two_sides_size_angle_beetween_sides_Window.show()
+        open_window_and_enable_buttons(self.area_triangle_l_two_sides_size_angle_beetween_sides_Window,
+                                       *self.buttons_to_disabled)
 
     # 3. Open resistance_parallel_Window
     def open_resistance_parallel_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.resistance_parallel_Window = QtWidgets.QMainWindow()
         self.ui = Ui_resistance_parallel_Window()
         self.ui.setupUi(self.resistance_parallel_Window)
-        self.resistance_parallel_Window.show()
+        open_window_and_enable_buttons(self.resistance_parallel_Window, *self.buttons_to_disabled)
 
     # 4. Open resistance_series_connected_Window
     def open_resistance_series_connected_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.resistance_series_connected_Window = QtWidgets.QMainWindow()
         self.ui = Ui_resistance_series_connected_Window()
         self.ui.setupUi(self.resistance_series_connected_Window)
-        self.resistance_series_connected_Window.show()
+        open_window_and_enable_buttons(self.resistance_series_connected_Window, *self.buttons_to_disabled)
 
     # 5. Open current_strength_electronic_circuit_Window
     def open_current_strength_electronic_circuit_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.current_strength_electronic_circuit_Window = QtWidgets.QMainWindow()
         self.ui = Ui_current_strength_electronic_circuit_Window()
         self.ui.setupUi(self.current_strength_electronic_circuit_Window)
-        self.current_strength_electronic_circuit_Window.show()
+        open_window_and_enable_buttons(self.current_strength_electronic_circuit_Window, *self.buttons_to_disabled)
 
     # 6. Open weight_conversion_from_pounds_to_kg_Window
     def open_weight_conversion_from_pounds_to_kg_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.weight_conversion_from_pounds_to_kg_Window = QtWidgets.QMainWindow()
         self.ui = Ui_weight_conversion_from_pounds_to_kg_Window()
         self.ui.setupUi(self.weight_conversion_from_pounds_to_kg_Window)
-        self.weight_conversion_from_pounds_to_kg_Window.show()
+        open_window_and_enable_buttons(self.weight_conversion_from_pounds_to_kg_Window, *self.buttons_to_disabled)
 
     # 7. Open coast_car_round_trip_Window
     def open_coast_car_round_trip_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.coast_car_round_trip_Window = QtWidgets.QMainWindow()
         self.ui = Ui_coast_car_round_trip_Window()
         self.ui.setupUi(self.coast_car_round_trip_Window)
         self.coast_car_round_trip_Window.show()
+        open_window_and_enable_buttons(self.coast_car_round_trip_Window, *self.buttons_to_disabled)
 
     # 8. Open area_trapezoid_l_bases_h_Window
     def open_area_trapezoid_l_bases_h_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.area_trapezoid_l_bases_h_Window = QtWidgets.QMainWindow()
         self.ui = Ui_area_trapezoid_l_bases_h_Window()
         self.ui.setupUi(self.area_trapezoid_l_bases_h_Window)
-        self.area_trapezoid_l_bases_h_Window.show()
+        open_window_and_enable_buttons(self.area_trapezoid_l_bases_h_Window, *self.buttons_to_disabled)
 
     # 9. Open volume_cylindre_base_radius_h_Window
     def open_volume_cylindre_base_radius_h_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.volume_cylindre_base_radius_h_Window = QtWidgets.QMainWindow()
         self.ui = Ui_volume_cylindre_base_radius_h_Window()
         self.ui.setupUi(self.volume_cylindre_base_radius_h_Window)
-        self.volume_cylindre_base_radius_h_Window.show()
+        open_window_and_enable_buttons(self.volume_cylindre_base_radius_h_Window, *self.buttons_to_disabled)
 
     # 10. Open surface_area_cylinder_base_r_h_Window
     def open_surface_area_cylinder_base_r_h_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.surface_area_cylinder_base_r_h_Window = QtWidgets.QMainWindow()
         self.ui = Ui_surface_area_cylinder_base_r_h_Window()
         self.ui.setupUi(self.surface_area_cylinder_base_r_h_Window)
-        self.surface_area_cylinder_base_r_h_Window.show()
+        open_window_and_enable_buttons(self.surface_area_cylinder_base_r_h_Window, *self.buttons_to_disabled)
 
     # 11. Open volume_of_parallelepiped_Window
     def open_volume_of_parallelepiped_Window(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.volume_of_parallelepiped_Window = QtWidgets.QMainWindow()
         self.ui = Ui_volume_of_parallelepiped_Window()
         self.ui.setupUi(self.volume_of_parallelepiped_Window)
-        self.volume_of_parallelepiped_Window.show()
+        open_window_and_enable_buttons(self.volume_of_parallelepiped_Window, *self.buttons_to_disabled)
 
     # 12. Open distance_conversion_from_miles_to_km_WIndow
     def open_distance_conversion_from_miles_to_km_WIndow(self):
+        disable_buttons(*self.buttons_to_disabled)
         self.distance_conversion_from_miles_to_km_WIndow = QtWidgets.QMainWindow()
         self.ui = Ui_distance_conversion_from_miles_to_km_WIndow()
         self.ui.setupUi(self.distance_conversion_from_miles_to_km_WIndow)
-        self.distance_conversion_from_miles_to_km_WIndow.show()
+        open_window_and_enable_buttons(self.distance_conversion_from_miles_to_km_WIndow, *self.buttons_to_disabled)
 
-    # setupUi
+
 
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))

@@ -16,7 +16,7 @@ class Ui_area_trapezoid_l_bases_h_Window(object):
     def setupUi(self, area_trapezoid_l_bases_h_Window):
         if not area_trapezoid_l_bases_h_Window.objectName():
             area_trapezoid_l_bases_h_Window.setObjectName(u"area_trapezoid_l_bases_h_Window")
-        area_trapezoid_l_bases_h_Window.resize(813, 498)
+        area_trapezoid_l_bases_h_Window.setFixedSize(813, 498)
 
         self.centralwidget = QWidget(area_trapezoid_l_bases_h_Window)
         self.centralwidget.setObjectName(u"centralwidget")

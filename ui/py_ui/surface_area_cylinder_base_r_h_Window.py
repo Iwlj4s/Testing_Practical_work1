@@ -16,7 +16,7 @@ class Ui_surface_area_cylinder_base_r_h_Window(object):
     def setupUi(self, surface_area_cylinder_base_r_h_Window):
         if not surface_area_cylinder_base_r_h_Window.objectName():
             surface_area_cylinder_base_r_h_Window.setObjectName(u"surface_area_cylinder_base_r_h_Window")
-        surface_area_cylinder_base_r_h_Window.resize(800, 492)
+        surface_area_cylinder_base_r_h_Window.setFixedSize(800, 492)
 
         self.centralwidget = QWidget(surface_area_cylinder_base_r_h_Window)
         self.centralwidget.setObjectName(u"centralwidget")

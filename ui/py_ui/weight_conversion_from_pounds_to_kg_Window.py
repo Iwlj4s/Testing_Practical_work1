@@ -16,7 +16,7 @@ class Ui_weight_conversion_from_pounds_to_kg_Window(object):
     def setupUi(self, weight_conversion_from_pounds_to_kg_Window):
         if not weight_conversion_from_pounds_to_kg_Window.objectName():
             weight_conversion_from_pounds_to_kg_Window.setObjectName(u"weight_conversion_from_pounds_to_kg_Window")
-        weight_conversion_from_pounds_to_kg_Window.resize(800, 365)
+        weight_conversion_from_pounds_to_kg_Window.setFixedSize(800, 365)
 
         self.centralwidget = QWidget(weight_conversion_from_pounds_to_kg_Window)
         self.centralwidget.setObjectName(u"centralwidget")

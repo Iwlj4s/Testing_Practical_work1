@@ -16,7 +16,7 @@ class Ui_current_strength_electronic_circuit_Window(object):
     def setupUi(self, current_strength_electronic_circuit_Window):
         if not current_strength_electronic_circuit_Window.objectName():
             current_strength_electronic_circuit_Window.setObjectName(u"current_strength_electronic_circuit_Window")
-        current_strength_electronic_circuit_Window.resize(800, 484)
+        current_strength_electronic_circuit_Window.setFixedSize(800, 484)
 
         self.centralwidget = QWidget(current_strength_electronic_circuit_Window)
         self.centralwidget.setObjectName(u"centralwidget")

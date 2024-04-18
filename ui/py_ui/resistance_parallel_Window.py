@@ -16,7 +16,7 @@ class Ui_resistance_parallel_Window(object):
     def setupUi(self, resistance_parallel_Window):
         if not resistance_parallel_Window.objectName():
             resistance_parallel_Window.setObjectName(u"resistance_parallel_Window")
-        resistance_parallel_Window.resize(814, 469)
+        resistance_parallel_Window.setFixedSize(814, 469)
 
         # INPUT FRAME #
         self.centralwidget = QWidget(resistance_parallel_Window)

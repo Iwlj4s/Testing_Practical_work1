@@ -16,7 +16,7 @@ class Ui_resistance_series_connected_Window(object):
     def setupUi(self, resistance_series_connected_Window):
         if not resistance_series_connected_Window.objectName():
             resistance_series_connected_Window.setObjectName(u"resistance_series_connected_Window")
-        resistance_series_connected_Window.resize(783, 436)
+        resistance_series_connected_Window.setFixedSize(783, 436)
 
         self.centralwidget = QWidget(resistance_series_connected_Window)
         self.centralwidget.setObjectName(u"centralwidget")
