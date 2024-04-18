@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1085</width>
+    <height>855</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>1071</width>
+      <height>841</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="main_layout">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+     <property name="leftMargin">
+      <number>100</number>
+     </property>
+     <property name="topMargin">
+      <number>10</number>
+     </property>
+     <property name="rightMargin">
+      <number>100</number>
+     </property>
+     <property name="bottomMargin">
+      <number>10</number>
+     </property>
+     <item>
+      <widget class="QPushButton" name="area_triangle_l_base_h">
+       <property name="minimumSize">
+        <size>
+         <width>445</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление площади треугольника, если известна длина основания и высота.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="area_triangle_l_two_sides_size_angle_beetween_sides">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление площади треугольника, если известны длины двух его сторон и 
+величина угла между этими сторонами.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resistance_parallel">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление сопротивления электрической цепи, состоящей из двух параллельно соединенных сопротивлений.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="resistance_series_connected">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление сопротивления электрической цепи, состоящей из двух последовательно соединенных сопротивлений.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="current_strength_electronic_circuit">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление силы тока в электрической цепи.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="weight_conversion_from_pounds_to_kg">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление пересчета веса фунтов в кг</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="coast_car_round_trip">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление стоимости поездки на автомобиле на дачу (туда и обратно)</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="area_trapezoid_l_bases_h">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление площади трапеции, если известны длины оснований и высота.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="volume_cylindre_base_radius_h">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление объема цилиндра, если известны радиус основания и высота.</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="surface_area_cylinder_base_r_h">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление площади поверхности цилиндра, если известны радиус основания и
+высота. </string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="volume_of_parallelepiped">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление объема параллелепипеда по трем его измерениям</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="distance_conversion_from_miles_to_km">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>9</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Вычисление пересчета расстояния из верст в километры.</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,31 @@
+QWidget {
+    background-color: rgb(192, 192, 192); /* Серый фон */
+    color: black; /* Черный текст */
+}
+
+QPushButton {
+    background-color: rgb(192, 192, 192); /* Серый фон кнопки */
+    color: black; /* Черный текст кнопки */
+    border: 1px solid black; /* Черная граница */
+    padding: 5px; /* Отступы */
+}
+
+QPushButton:hover {
+    background-color: rgb(128, 128, 128); /* Серый фон при наведении */
+}
+
+QLineEdit {
+    background-color: white; /* Белый фон для поля ввода */
+    color: black; /* Черный текст */
+    border: 1px solid black; /* Черная граница */
+    padding: 2px; /* Отступы */
+}
+
+QLabel {
+    color: black; /* Черный текст для меток */
+    font-weight: bold; /* Жирный шрифт */
+}
+
+QFormLayout {
+    margin: 10px; /* Отступы для формы */
+}
