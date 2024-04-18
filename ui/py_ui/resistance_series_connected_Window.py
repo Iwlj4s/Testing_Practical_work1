@@ -8,20 +8,28 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import resistance_series
+
 
 class Ui_resistance_series_connected_Window(object):
     def setupUi(self, resistance_series_connected_Window):
         if not resistance_series_connected_Window.objectName():
             resistance_series_connected_Window.setObjectName(u"resistance_series_connected_Window")
         resistance_series_connected_Window.resize(783, 436)
+
         self.centralwidget = QWidget(resistance_series_connected_Window)
         self.centralwidget.setObjectName(u"centralwidget")
         self.formLayoutWidget = QWidget(self.centralwidget)
+
+        # INPUT FRAME #
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(270, 160, 321, 171))
+
         self.input_frame = QFormLayout(self.formLayoutWidget)
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
+
         self.r2_label = QLabel(self.formLayoutWidget)
         self.r2_label.setObjectName(u"r2_label")
         font = QFont()
@@ -55,6 +63,7 @@ class Ui_resistance_series_connected_Window(object):
 
         self.input_frame.setWidget(0, QFormLayout.LabelRole, self.r1_label)
 
+        # RESULT BUTTON #
         self.resistance_series_connected_result_button = QPushButton(self.formLayoutWidget)
         self.resistance_series_connected_result_button.setObjectName(u"resistance_series_connected_result_button")
         font2 = QFont()
@@ -63,11 +72,15 @@ class Ui_resistance_series_connected_Window(object):
         font2.setBold(False)
         self.resistance_series_connected_result_button.setFont(font2)
 
+        self.resistance_series_connected_result_button.clicked.connect(self.get_result)
+
         self.input_frame.setWidget(3, QFormLayout.FieldRole, self.resistance_series_connected_result_button)
 
+        # RESULT FRAME #
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(0, 340, 221, 91))
+
         self.result_frame = QFormLayout(self.formLayoutWidget_2)
         self.result_frame.setObjectName(u"result_frame")
         self.result_frame.setContentsMargins(20, 10, 30, 0)
@@ -102,6 +115,25 @@ class Ui_resistance_series_connected_Window(object):
 
         QMetaObject.connectSlotsByName(resistance_series_connected_Window)
     # setupUi
+
+    # Get result
+    def get_result(self):
+        r1_text = self.r1_input.text()
+        r2_text = self.r2_input.text()
+
+        enter_digit = user_enter_digit(r1_text, r2_text)
+
+        print(r1_text)
+        print(r2_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.r1_input.setText(result)
+            self.r2_input.setText(result)
+        else:
+            result = resistance_series(r1=int(r1_text), r2=int(r2_text))
+            print(result)
+            self.result_text.setText(str(result))
 
     def retranslateUi(self, resistance_series_connected_Window):
         resistance_series_connected_Window.setWindowTitle(QCoreApplication.translate("resistance_series_connected_Window", u"MainWindow", None))

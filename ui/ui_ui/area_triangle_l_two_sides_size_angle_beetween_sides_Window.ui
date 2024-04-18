@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>811</width>
+    <width>831</width>
     <height>470</height>
    </rect>
   </property>
@@ -39,7 +39,7 @@
       <x>240</x>
       <y>170</y>
       <width>321</width>
-      <height>171</height>
+      <height>198</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="input_frame">
@@ -113,7 +113,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="4" column="1">
       <widget class="QPushButton" name="area_triangle_l_two_sides_size_angle_beetween_sides_result_button">
        <property name="font">
         <font>
@@ -124,6 +124,35 @@
        </property>
        <property name="text">
         <string>Вычислить</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="angle_label">
+       <property name="font">
+        <font>
+         <family>Source Code Pro Medium</family>
+         <pointsize>20</pointsize>
+         <italic>true</italic>
+        </font>
+       </property>
+       <property name="text">
+        <string>b</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="angle_input">
+       <property name="font">
+        <font>
+         <family>Source Code Pro</family>
+         <pointsize>14</pointsize>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="text">
+        <string/>
        </property>
       </widget>
      </item>

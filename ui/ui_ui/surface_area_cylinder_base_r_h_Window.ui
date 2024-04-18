@@ -42,7 +42,7 @@
       <x>270</x>
       <y>160</y>
       <width>361</width>
-      <height>251</height>
+      <height>181</height>
      </rect>
     </property>
     <layout class="QFormLayout" name="input_frame">
@@ -58,65 +58,7 @@
      <property name="bottomMargin">
       <number>20</number>
      </property>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="Smain_input">
-       <property name="font">
-        <font>
-         <family>Source Code Pro</family>
-         <pointsize>14</pointsize>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
      <item row="0" column="0">
-      <widget class="QLabel" name="Smain_label">
-       <property name="font">
-        <font>
-         <family>Source Code Pro Medium</family>
-         <pointsize>20</pointsize>
-         <italic>true</italic>
-        </font>
-       </property>
-       <property name="text">
-        <string>Sосн.   </string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="0">
-      <widget class="QLabel" name="Sbp_label">
-       <property name="font">
-        <font>
-         <family>Source Code Pro Medium</family>
-         <pointsize>20</pointsize>
-         <italic>true</italic>
-        </font>
-       </property>
-       <property name="text">
-        <string>Sбп.   </string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="Sbp_input">
-       <property name="font">
-        <font>
-         <family>Source Code Pro</family>
-         <pointsize>14</pointsize>
-         <italic>false</italic>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string/>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
       <widget class="QLabel" name="R_label">
        <property name="font">
         <font>
@@ -130,7 +72,7 @@
        </property>
       </widget>
      </item>
-     <item row="2" column="1">
+     <item row="0" column="1">
       <widget class="QLineEdit" name="R_input">
        <property name="font">
         <font>
@@ -145,7 +87,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="0">
+     <item row="1" column="0">
       <widget class="QLabel" name="h_label">
        <property name="font">
         <font>
@@ -159,7 +101,7 @@
        </property>
       </widget>
      </item>
-     <item row="3" column="1">
+     <item row="1" column="1">
       <widget class="QLineEdit" name="h_input">
        <property name="font">
         <font>
@@ -174,7 +116,7 @@
        </property>
       </widget>
      </item>
-     <item row="4" column="1">
+     <item row="2" column="1">
       <widget class="QPushButton" name="surface_area_cylinder_base_r_h_result_button">
        <property name="font">
         <font>

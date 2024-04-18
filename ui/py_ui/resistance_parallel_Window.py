@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'resistance_parallel_Window.ui'
-##
-## Created by: Qt User Interface Compiler version 6.7.0
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
     QMetaObject, QObject, QPoint, QRect,
     QSize, QTime, QUrl, Qt)
@@ -18,19 +8,27 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import resistance_parallel
+
+
 class Ui_resistance_parallel_Window(object):
     def setupUi(self, resistance_parallel_Window):
         if not resistance_parallel_Window.objectName():
             resistance_parallel_Window.setObjectName(u"resistance_parallel_Window")
         resistance_parallel_Window.resize(814, 469)
+
+        # INPUT FRAME #
         self.centralwidget = QWidget(resistance_parallel_Window)
         self.centralwidget.setObjectName(u"centralwidget")
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(270, 180, 321, 171))
+
         self.input_frame = QFormLayout(self.formLayoutWidget)
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
+
         self.r2_label = QLabel(self.formLayoutWidget)
         self.r2_label.setObjectName(u"r2_label")
         font = QFont()
@@ -63,6 +61,7 @@ class Ui_resistance_parallel_Window(object):
 
         self.input_frame.setWidget(0, QFormLayout.LabelRole, self.r1_label)
 
+        # RESULT BUTTON #
         self.resistance_parallel_result_button = QPushButton(self.formLayoutWidget)
         self.resistance_parallel_result_button.setObjectName(u"resistance_parallel_result_button")
         font2 = QFont()
@@ -70,6 +69,8 @@ class Ui_resistance_parallel_Window(object):
         font2.setPointSize(14)
         font2.setBold(False)
         self.resistance_parallel_result_button.setFont(font2)
+
+        self.resistance_parallel_result_button.clicked.connect(self.get_result)
 
         self.input_frame.setWidget(3, QFormLayout.FieldRole, self.resistance_parallel_result_button)
 
@@ -109,6 +110,25 @@ class Ui_resistance_parallel_Window(object):
 
         QMetaObject.connectSlotsByName(resistance_parallel_Window)
     # setupUi
+
+    # Get result
+    def get_result(self):
+        r1_text = self.r1_input.text()
+        r2_text = self.r2_input.text()
+
+        enter_digit = user_enter_digit(r1_text, r2_text)
+
+        print(r1_text)
+        print(r2_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.r1_input.setText(result)
+            self.r2_input.setText(result)
+        else:
+            result = resistance_parallel(r1=int(r1_text), r2=int(r2_text))
+            print(result)
+            self.result_text.setText(str(result))
 
     def retranslateUi(self, resistance_parallel_Window):
         resistance_parallel_Window.setWindowTitle(QCoreApplication.translate("resistance_parallel_Window", u"MainWindow", None))

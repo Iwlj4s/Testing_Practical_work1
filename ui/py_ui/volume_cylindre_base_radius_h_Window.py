@@ -8,12 +8,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import cylinder_volume
+
 
 class Ui_volume_cylindre_base_radius_h_Window(object):
     def setupUi(self, volume_cylindre_base_radius_h_Window):
         if not volume_cylindre_base_radius_h_Window.objectName():
             volume_cylindre_base_radius_h_Window.setObjectName(u"volume_cylindre_base_radius_h_Window")
         volume_cylindre_base_radius_h_Window.resize(800, 516)
+
         self.centralwidget = QWidget(volume_cylindre_base_radius_h_Window)
         self.centralwidget.setObjectName(u"centralwidget")
         self.volume_cylindre_base_radius_h_label = QLabel(self.centralwidget)
@@ -22,11 +26,14 @@ class Ui_volume_cylindre_base_radius_h_Window(object):
         font = QFont()
         font.setFamilies([u"Source Code Pro"])
         font.setPointSize(16)
+
+        # RESULT FRAME #
         self.volume_cylindre_base_radius_h_label.setFont(font)
         self.volume_cylindre_base_radius_h_label.setWordWrap(True)
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(0, 390, 221, 91))
+
         self.result_frame = QFormLayout(self.formLayoutWidget_2)
         self.result_frame.setObjectName(u"result_frame")
         self.result_frame.setContentsMargins(20, 10, 30, 0)
@@ -46,12 +53,15 @@ class Ui_volume_cylindre_base_radius_h_Window(object):
         self.img.setGeometry(QRect(320, 30, 221, 91))
         self.img.setPixmap(QPixmap(u"./ui/py_ui/img/formula9.png"))
         self.img.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        # INPUT FRAME #
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(280, 120, 321, 161))
         self.input_frame = QFormLayout(self.formLayoutWidget)
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
+
         self.h_label = QLabel(self.formLayoutWidget)
         self.h_label.setObjectName(u"h_label")
         font1 = QFont()
@@ -62,6 +72,7 @@ class Ui_volume_cylindre_base_radius_h_Window(object):
 
         self.input_frame.setWidget(2, QFormLayout.LabelRole, self.h_label)
 
+        # RESULT BUTTON #
         self.volume_cylindre_base_radius_h_result_button = QPushButton(self.formLayoutWidget)
         self.volume_cylindre_base_radius_h_result_button.setObjectName(u"volume_cylindre_base_radius_h_result_button")
         font2 = QFont()
@@ -69,6 +80,8 @@ class Ui_volume_cylindre_base_radius_h_Window(object):
         font2.setPointSize(14)
         font2.setBold(False)
         self.volume_cylindre_base_radius_h_result_button.setFont(font2)
+
+        self.volume_cylindre_base_radius_h_result_button.clicked.connect(self.get_result)
 
         self.input_frame.setWidget(3, QFormLayout.FieldRole, self.volume_cylindre_base_radius_h_result_button)
 
@@ -101,6 +114,25 @@ class Ui_volume_cylindre_base_radius_h_Window(object):
 
         QMetaObject.connectSlotsByName(volume_cylindre_base_radius_h_Window)
     # setupUi
+
+    # Get result
+    def get_result(self):
+        r_text = self.R_input.text()
+        h_text = self.h_input.text()
+
+        enter_digit = user_enter_digit(r_text, h_text)
+
+        print(r_text)
+        print(h_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.R_input.setText(result)
+            self.h_input.setText(result)
+        else:
+            result = cylinder_volume(radius=int(r_text), height=int(h_text))
+            print(result)
+            self.result_text.setText(str(result))
 
     def retranslateUi(self, volume_cylindre_base_radius_h_Window):
         volume_cylindre_base_radius_h_Window.setWindowTitle(QCoreApplication.translate("volume_cylindre_base_radius_h_Window", u"MainWindow", None))

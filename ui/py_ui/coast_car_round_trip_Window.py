@@ -8,6 +8,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import trip_cost
+
 
 class Ui_coast_car_round_trip_Window(object):
     def setupUi(self, coast_car_round_trip_Window):
@@ -23,11 +26,14 @@ class Ui_coast_car_round_trip_Window(object):
         font.setFamilies([u"Source Code Pro Black"])
         font.setPointSize(16)
         font.setBold(True)
+
+        # RESULT FRAME #
         self.coast_car_round_trip_label.setFont(font)
         self.coast_car_round_trip_label.setWordWrap(True)
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(0, 410, 261, 91))
+
         self.result_frame = QFormLayout(self.formLayoutWidget_2)
         self.result_frame.setObjectName(u"result_frame")
         self.result_frame.setContentsMargins(20, 10, 30, 0)
@@ -56,12 +62,16 @@ class Ui_coast_car_round_trip_Window(object):
         self.img.setFont(font2)
         self.img.setAlignment(Qt.AlignmentFlag.AlignJustify|Qt.AlignmentFlag.AlignVCenter)
         self.img.setWordWrap(False)
+
+        # INPUT FRAME #
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(200, 140, 431, 201))
+
         self.input_frame = QFormLayout(self.formLayoutWidget)
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
+
         self.Gas_km_input = QLineEdit(self.formLayoutWidget)
         self.Gas_km_input.setObjectName(u"Gas_km_input")
         font3 = QFont()
@@ -107,6 +117,7 @@ class Ui_coast_car_round_trip_Window(object):
 
         self.input_frame.setWidget(2, QFormLayout.LabelRole, self.gas_price_label)
 
+        # RESULT BUTTON #
         self.coast_car_round_trip_result_button = QPushButton(self.formLayoutWidget)
         self.coast_car_round_trip_result_button.setObjectName(u"coast_car_round_trip_result_button")
         font5 = QFont()
@@ -114,6 +125,8 @@ class Ui_coast_car_round_trip_Window(object):
         font5.setPointSize(14)
         font5.setBold(False)
         self.coast_car_round_trip_result_button.setFont(font5)
+
+        self.coast_car_round_trip_result_button.clicked.connect(self.get_result)
 
         self.input_frame.setWidget(3, QFormLayout.FieldRole, self.coast_car_round_trip_result_button)
 
@@ -123,6 +136,29 @@ class Ui_coast_car_round_trip_Window(object):
 
         QMetaObject.connectSlotsByName(coast_car_round_trip_Window)
     # setupUi
+
+    # Get result
+    def get_result(self):
+        Gas_km_text = self.Gas_km_input.text()
+        gas_price_text = self.gas_price_input.text()
+        Distance_text = self.Distance_input.text()
+
+        enter_digit = user_enter_digit(Gas_km_text, gas_price_text, Distance_text)
+
+        print(Gas_km_text)
+        print(gas_price_text)
+        print(Distance_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.Gas_km_input.setText(result)
+            self.gas_price_input.setText(result)
+            self.Distance_input.setText(result)
+        else:
+            result = trip_cost(gas_consumption=int(gas_price_text), gas_price_per_liter=int(Gas_km_text),
+                               distance=int(Distance_text))
+            print(result)
+            self.result_text.setText(str(result))
 
     def retranslateUi(self, coast_car_round_trip_Window):
         coast_car_round_trip_Window.setWindowTitle(QCoreApplication.translate("coast_car_round_trip_Window", u"MainWindow", None))

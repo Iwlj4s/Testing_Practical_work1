@@ -8,12 +8,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import verst_to_km
+
 
 class Ui_distance_conversion_from_miles_to_km_WIndow(object):
     def setupUi(self, distance_conversion_from_miles_to_km_WIndow):
         if not distance_conversion_from_miles_to_km_WIndow.objectName():
             distance_conversion_from_miles_to_km_WIndow.setObjectName(u"distance_conversion_from_miles_to_km_WIndow")
         distance_conversion_from_miles_to_km_WIndow.resize(712, 322)
+
         self.centralwidget = QWidget(distance_conversion_from_miles_to_km_WIndow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.info_label = QLabel(self.centralwidget)
@@ -23,6 +27,7 @@ class Ui_distance_conversion_from_miles_to_km_WIndow(object):
         font.setFamilies([u"Source Code Pro"])
         font.setPointSize(14)
         self.info_label.setFont(font)
+
         self.distance_conversion_from_miles_to_km_label = QLabel(self.centralwidget)
         self.distance_conversion_from_miles_to_km_label.setObjectName(u"distance_conversion_from_miles_to_km_label")
         self.distance_conversion_from_miles_to_km_label.setGeometry(QRect(10, 0, 711, 51))
@@ -31,9 +36,12 @@ class Ui_distance_conversion_from_miles_to_km_WIndow(object):
         font1.setPointSize(16)
         self.distance_conversion_from_miles_to_km_label.setFont(font1)
         self.distance_conversion_from_miles_to_km_label.setWordWrap(True)
+
+        # INPUT FRAME #
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(170, 100, 351, 112))
+
         self.input_frame_2 = QFormLayout(self.formLayoutWidget)
         self.input_frame_2.setObjectName(u"input_frame_2")
         self.input_frame_2.setContentsMargins(20, 20, 30, 20)
@@ -58,6 +66,7 @@ class Ui_distance_conversion_from_miles_to_km_WIndow(object):
 
         self.input_frame_2.setWidget(0, QFormLayout.FieldRole, self.pounds_input_2)
 
+        # RESULT BUTTON #
         self.distance_conversion_from_miles_to_km_result_button_ = QPushButton(self.formLayoutWidget)
         self.distance_conversion_from_miles_to_km_result_button_.setObjectName(u"distance_conversion_from_miles_to_km_result_button_")
         font4 = QFont()
@@ -66,11 +75,15 @@ class Ui_distance_conversion_from_miles_to_km_WIndow(object):
         font4.setBold(False)
         self.distance_conversion_from_miles_to_km_result_button_.setFont(font4)
 
+        self.distance_conversion_from_miles_to_km_result_button_.clicked.connect(self.get_result)
+
         self.input_frame_2.setWidget(1, QFormLayout.FieldRole, self.distance_conversion_from_miles_to_km_result_button_)
 
+        # RESULT FRAME #
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(220, 230, 231, 81))
+
         self.result_frame_2 = QFormLayout(self.formLayoutWidget_2)
         self.result_frame_2.setObjectName(u"result_frame_2")
         self.result_frame_2.setContentsMargins(20, 10, 30, 0)
@@ -98,6 +111,22 @@ class Ui_distance_conversion_from_miles_to_km_WIndow(object):
 
         QMetaObject.connectSlotsByName(distance_conversion_from_miles_to_km_WIndow)
     # setupUi
+
+    # Get result
+    def get_result(self):
+        verst_text = self.pounds_input_2.text()
+
+        enter_digit = user_enter_digit(verst_text)
+
+        print(verst_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.pounds_input_2.setText(result)
+        else:
+            result = verst_to_km(verst=int(verst_text))
+            print(result)
+            self.result_text_2.setText(str(result))
 
     def retranslateUi(self, distance_conversion_from_miles_to_km_WIndow):
         distance_conversion_from_miles_to_km_WIndow.setWindowTitle(QCoreApplication.translate("distance_conversion_from_miles_to_km_WIndow", u"MainWindow", None))

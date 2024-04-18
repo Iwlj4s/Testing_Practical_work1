@@ -8,12 +8,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import pounds_to_kg
+
 
 class Ui_weight_conversion_from_pounds_to_kg_Window(object):
     def setupUi(self, weight_conversion_from_pounds_to_kg_Window):
         if not weight_conversion_from_pounds_to_kg_Window.objectName():
             weight_conversion_from_pounds_to_kg_Window.setObjectName(u"weight_conversion_from_pounds_to_kg_Window")
         weight_conversion_from_pounds_to_kg_Window.resize(800, 365)
+
         self.centralwidget = QWidget(weight_conversion_from_pounds_to_kg_Window)
         self.centralwidget.setObjectName(u"centralwidget")
         self.weight_conversion_from_pounds_to_kg_label = QLabel(self.centralwidget)
@@ -22,14 +26,18 @@ class Ui_weight_conversion_from_pounds_to_kg_Window(object):
         font = QFont()
         font.setFamilies([u"Source Code Pro"])
         font.setPointSize(16)
+
+        # RESULT FRAME #
         self.weight_conversion_from_pounds_to_kg_label.setFont(font)
         self.weight_conversion_from_pounds_to_kg_label.setWordWrap(True)
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(290, 220, 231, 117))
+
         self.result_frame = QFormLayout(self.formLayoutWidget_2)
         self.result_frame.setObjectName(u"result_frame")
         self.result_frame.setContentsMargins(20, 10, 30, 0)
+
         self.label_2 = QLabel(self.formLayoutWidget_2)
         self.label_2.setObjectName(u"label_2")
         self.label_2.setFont(font)
@@ -47,6 +55,7 @@ class Ui_weight_conversion_from_pounds_to_kg_Window(object):
 
         self.result_frame.setWidget(2, QFormLayout.FieldRole, self.result_text)
 
+        # INFO LABEL #
         self.info_label = QLabel(self.centralwidget)
         self.info_label.setObjectName(u"info_label")
         self.info_label.setGeometry(QRect(310, 50, 191, 41))
@@ -54,9 +63,12 @@ class Ui_weight_conversion_from_pounds_to_kg_Window(object):
         font1.setFamilies([u"Source Code Pro"])
         font1.setPointSize(14)
         self.info_label.setFont(font1)
+
+        # INPUT FRAME #
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(250, 100, 321, 111))
+
         self.input_frame = QFormLayout(self.formLayoutWidget)
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
@@ -81,6 +93,7 @@ class Ui_weight_conversion_from_pounds_to_kg_Window(object):
 
         self.input_frame.setWidget(0, QFormLayout.FieldRole, self.pounds_input)
 
+        # RESULT BUTTON #
         self.weight_conversion_from_pounds_to_kg_result_button = QPushButton(self.formLayoutWidget)
         self.weight_conversion_from_pounds_to_kg_result_button.setObjectName(u"weight_conversion_from_pounds_to_kg_result_button")
         font4 = QFont()
@@ -88,6 +101,8 @@ class Ui_weight_conversion_from_pounds_to_kg_Window(object):
         font4.setPointSize(14)
         font4.setBold(False)
         self.weight_conversion_from_pounds_to_kg_result_button.setFont(font4)
+
+        self.weight_conversion_from_pounds_to_kg_result_button.clicked.connect(self.get_result)
 
         self.input_frame.setWidget(1, QFormLayout.FieldRole, self.weight_conversion_from_pounds_to_kg_result_button)
 
@@ -97,6 +112,22 @@ class Ui_weight_conversion_from_pounds_to_kg_Window(object):
 
         QMetaObject.connectSlotsByName(weight_conversion_from_pounds_to_kg_Window)
     # setupUi
+
+    # Get result
+    def get_result(self):
+        pounds_text = self.pounds_input.text()
+
+        enter_digit = user_enter_digit(pounds_text)
+
+        print(pounds_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.pounds_input.setText(result)
+        else:
+            result = pounds_to_kg(pounds=int(pounds_text))
+            print(result)
+            self.result_text.setText(str(result))
 
     def retranslateUi(self, weight_conversion_from_pounds_to_kg_Window):
         weight_conversion_from_pounds_to_kg_Window.setWindowTitle(QCoreApplication.translate("weight_conversion_from_pounds_to_kg_Window", u"MainWindow", None))

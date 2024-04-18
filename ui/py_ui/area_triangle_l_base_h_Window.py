@@ -1,13 +1,3 @@
-# -*- coding: utf-8 -*-
-
-################################################################################
-## Form generated from reading UI file 'area_triangle_l_base_h_Window.ui'
-##
-## Created by: Qt User Interface Compiler version 6.7.0
-##
-## WARNING! All changes made in this file will be lost when recompiling UI file!
-################################################################################
-
 from PySide6.QtCore import (QCoreApplication, QDate, QDateTime, QLocale,
                             QMetaObject, QObject, QPoint, QRect,
                             QSize, QTime, QUrl, Qt)
@@ -17,6 +7,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
                            QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
                                QMainWindow, QPushButton, QSizePolicy, QWidget)
+
+from functions.calculation_functions import triangle_area_base_height
+from checks.input_check import user_enter_digit
 
 
 class Ui_area_triangle_l_base_h_Window(object):
@@ -30,23 +23,30 @@ class Ui_area_triangle_l_base_h_Window(object):
         area_triangle_l_base_h_Window.setFont(font)
         self.centralwidget = QWidget(area_triangle_l_base_h_Window)
         self.centralwidget.setObjectName(u"centralwidget")
+
         self.area_triangle_l_base_h_label = QLabel(self.centralwidget)
         self.area_triangle_l_base_h_label.setObjectName(u"area_triangle_l_base_h_label")
         self.area_triangle_l_base_h_label.setGeometry(QRect(20, 0, 791, 81))
         self.area_triangle_l_base_h_label.setFont(font)
+
         self.img = QLabel(self.centralwidget)
         self.img.setObjectName(u"img")
         self.img.setGeometry(QRect(330, 60, 151, 71))
         self.img.setPixmap(QPixmap(u"./ui/py_ui/img/1.png"))
         self.img.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(250, 140, 321, 171))
+
+        # INPUT FRAME #
         self.input_frame = QFormLayout(self.formLayoutWidget)
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
+
         self.b_label = QLabel(self.formLayoutWidget)
         self.b_label.setObjectName(u"b_label")
+
         font1 = QFont()
         font1.setFamilies([u"Source Code Pro Medium"])
         font1.setPointSize(20)
@@ -73,6 +73,7 @@ class Ui_area_triangle_l_base_h_Window(object):
 
         self.input_frame.setWidget(0, QFormLayout.LabelRole, self.a_label)
 
+        # RESULT BUTTON #
         self.pushButtonarea_triangle_l_base_h_result_button = QPushButton(self.formLayoutWidget)
         self.pushButtonarea_triangle_l_base_h_result_button.setObjectName(
             u"pushButtonarea_triangle_l_base_h_result_button")
@@ -82,11 +83,15 @@ class Ui_area_triangle_l_base_h_Window(object):
         font2.setBold(False)
         self.pushButtonarea_triangle_l_base_h_result_button.setFont(font2)
 
+        self.pushButtonarea_triangle_l_base_h_result_button.clicked.connect(self.get_result)
+
         self.input_frame.setWidget(3, QFormLayout.FieldRole, self.pushButtonarea_triangle_l_base_h_result_button)
 
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(10, 370, 321, 141))
+
+        # RESULT FRAME #
         self.result_frame = QFormLayout(self.formLayoutWidget_2)
         self.result_frame.setObjectName(u"result_frame")
         self.result_frame.setContentsMargins(20, 10, 30, 0)
@@ -111,6 +116,26 @@ class Ui_area_triangle_l_base_h_Window(object):
         QMetaObject.connectSlotsByName(area_triangle_l_base_h_Window)
 
     # setupUi
+
+    # Get result
+    def get_result(self):
+        a_text = self.a_input.text()
+
+        b_text = self.b_input.text()
+
+        enter_digit = user_enter_digit(a_text, b_text)
+
+        print(a_text)
+        print(b_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.a_input.setText(result)
+            self.b_input.setText(result)
+        else:
+            result = triangle_area_base_height(base=int(a_text), height=int(b_text))
+            print(result)
+            self.result_text.setText(str(result))
 
     def retranslateUi(self, area_triangle_l_base_h_Window):
         area_triangle_l_base_h_Window.setWindowTitle(

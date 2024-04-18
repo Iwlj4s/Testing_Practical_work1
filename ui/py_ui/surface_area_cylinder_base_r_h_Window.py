@@ -8,12 +8,16 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import cylinder_surface_area
+
 
 class Ui_surface_area_cylinder_base_r_h_Window(object):
     def setupUi(self, surface_area_cylinder_base_r_h_Window):
         if not surface_area_cylinder_base_r_h_Window.objectName():
             surface_area_cylinder_base_r_h_Window.setObjectName(u"surface_area_cylinder_base_r_h_Window")
         surface_area_cylinder_base_r_h_Window.resize(800, 492)
+
         self.centralwidget = QWidget(surface_area_cylinder_base_r_h_Window)
         self.centralwidget.setObjectName(u"centralwidget")
         self.surface_area_cylinder_base_r_h_label = QLabel(self.centralwidget)
@@ -24,69 +28,49 @@ class Ui_surface_area_cylinder_base_r_h_Window(object):
         font.setPointSize(16)
         self.surface_area_cylinder_base_r_h_label.setFont(font)
         self.surface_area_cylinder_base_r_h_label.setWordWrap(True)
+
+        # INPUT FRAME #
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
-        self.formLayoutWidget.setGeometry(QRect(270, 160, 361, 251))
+        self.formLayoutWidget.setGeometry(QRect(270, 160, 361, 181))
         self.input_frame = QFormLayout(self.formLayoutWidget)
+
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
-        self.Smain_input = QLineEdit(self.formLayoutWidget)
-        self.Smain_input.setObjectName(u"Smain_input")
-        font1 = QFont()
-        font1.setFamilies([u"Source Code Pro"])
-        font1.setPointSize(14)
-        font1.setBold(False)
-        font1.setItalic(False)
-        self.Smain_input.setFont(font1)
-
-        self.input_frame.setWidget(0, QFormLayout.FieldRole, self.Smain_input)
-
-        self.Smain_label = QLabel(self.formLayoutWidget)
-        self.Smain_label.setObjectName(u"Smain_label")
-        font2 = QFont()
-        font2.setFamilies([u"Source Code Pro Medium"])
-        font2.setPointSize(20)
-        font2.setItalic(True)
-        self.Smain_label.setFont(font2)
-
-        self.input_frame.setWidget(0, QFormLayout.LabelRole, self.Smain_label)
-
-        self.Sbp_label = QLabel(self.formLayoutWidget)
-        self.Sbp_label.setObjectName(u"Sbp_label")
-        self.Sbp_label.setFont(font2)
-
-        self.input_frame.setWidget(1, QFormLayout.LabelRole, self.Sbp_label)
-
-        self.Sbp_input = QLineEdit(self.formLayoutWidget)
-        self.Sbp_input.setObjectName(u"Sbp_input")
-        self.Sbp_input.setFont(font1)
-
-        self.input_frame.setWidget(1, QFormLayout.FieldRole, self.Sbp_input)
-
         self.R_label = QLabel(self.formLayoutWidget)
         self.R_label.setObjectName(u"R_label")
-        self.R_label.setFont(font2)
+        font1 = QFont()
+        font1.setFamilies([u"Source Code Pro Medium"])
+        font1.setPointSize(20)
+        font1.setItalic(True)
+        self.R_label.setFont(font1)
 
-        self.input_frame.setWidget(2, QFormLayout.LabelRole, self.R_label)
+        self.input_frame.setWidget(0, QFormLayout.LabelRole, self.R_label)
 
         self.R_input = QLineEdit(self.formLayoutWidget)
         self.R_input.setObjectName(u"R_input")
-        self.R_input.setFont(font1)
+        font2 = QFont()
+        font2.setFamilies([u"Source Code Pro"])
+        font2.setPointSize(14)
+        font2.setBold(False)
+        font2.setItalic(False)
+        self.R_input.setFont(font2)
 
-        self.input_frame.setWidget(2, QFormLayout.FieldRole, self.R_input)
+        self.input_frame.setWidget(0, QFormLayout.FieldRole, self.R_input)
 
         self.h_label = QLabel(self.formLayoutWidget)
         self.h_label.setObjectName(u"h_label")
-        self.h_label.setFont(font2)
+        self.h_label.setFont(font1)
 
-        self.input_frame.setWidget(3, QFormLayout.LabelRole, self.h_label)
+        self.input_frame.setWidget(1, QFormLayout.LabelRole, self.h_label)
 
         self.h_input = QLineEdit(self.formLayoutWidget)
         self.h_input.setObjectName(u"h_input")
-        self.h_input.setFont(font1)
+        self.h_input.setFont(font2)
 
-        self.input_frame.setWidget(3, QFormLayout.FieldRole, self.h_input)
+        self.input_frame.setWidget(1, QFormLayout.FieldRole, self.h_input)
 
+        # RESULT BUTTON #
         self.surface_area_cylinder_base_r_h_result_button = QPushButton(self.formLayoutWidget)
         self.surface_area_cylinder_base_r_h_result_button.setObjectName(u"surface_area_cylinder_base_r_h_result_button")
         font3 = QFont()
@@ -95,13 +79,16 @@ class Ui_surface_area_cylinder_base_r_h_Window(object):
         font3.setBold(False)
         self.surface_area_cylinder_base_r_h_result_button.setFont(font3)
 
-        self.input_frame.setWidget(4, QFormLayout.FieldRole, self.surface_area_cylinder_base_r_h_result_button)
+        self.surface_area_cylinder_base_r_h_result_button.clicked.connect(self.get_result)
+
+        self.input_frame.setWidget(2, QFormLayout.FieldRole, self.surface_area_cylinder_base_r_h_result_button)
 
         self.img = QLabel(self.centralwidget)
         self.img.setObjectName(u"img")
         self.img.setGeometry(QRect(160, 60, 561, 101))
         self.img.setPixmap(QPixmap(u"./ui/py_ui/img/formula10.png"))
         self.img.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(0, 390, 221, 91))
@@ -126,13 +113,28 @@ class Ui_surface_area_cylinder_base_r_h_Window(object):
         QMetaObject.connectSlotsByName(surface_area_cylinder_base_r_h_Window)
     # setupUi
 
+    # Get result
+    def get_result(self):
+        r_text = self.R_input.text()
+        h_text = self.h_input.text()
+
+        enter_digit = user_enter_digit(r_text, h_text)
+
+        print(r_text)
+        print(h_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.R_input.setText(result)
+            self.h_input.setText(result)
+        else:
+            result = cylinder_surface_area(radius=int(r_text), height=int(h_text))
+            print(result)
+            self.result_text.setText(str(result))
+
     def retranslateUi(self, surface_area_cylinder_base_r_h_Window):
         surface_area_cylinder_base_r_h_Window.setWindowTitle(QCoreApplication.translate("surface_area_cylinder_base_r_h_Window", u"MainWindow", None))
         self.surface_area_cylinder_base_r_h_label.setText(QCoreApplication.translate("surface_area_cylinder_base_r_h_Window", u"\u0412\u044b\u0447\u0438\u0441\u043b\u0435\u043d\u0438\u0435 \u043f\u043b\u043e\u0449\u0430\u0434\u0438 \u043f\u043e\u0432\u0435\u0440\u0445\u043d\u043e\u0441\u0442\u0438 \u0446\u0438\u043b\u0438\u043d\u0434\u0440\u0430, \u0435\u0441\u043b\u0438 \u0438\u0437\u0432\u0435\u0441\u0442\u043d\u044b \u0440\u0430\u0434\u0438\u0443\u0441 \u043e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u044f \u0438 \u0432\u044b\u0441\u043e\u0442\u0430. ", None))
-        self.Smain_input.setText("")
-        self.Smain_label.setText(QCoreApplication.translate("surface_area_cylinder_base_r_h_Window", u"S\u043e\u0441\u043d.   ", None))
-        self.Sbp_label.setText(QCoreApplication.translate("surface_area_cylinder_base_r_h_Window", u"S\u0431\u043f.   ", None))
-        self.Sbp_input.setText("")
         self.R_label.setText(QCoreApplication.translate("surface_area_cylinder_base_r_h_Window", u"R   ", None))
         self.R_input.setText("")
         self.h_label.setText(QCoreApplication.translate("surface_area_cylinder_base_r_h_Window", u"h   ", None))

@@ -8,6 +8,9 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
 from PySide6.QtWidgets import (QApplication, QFormLayout, QLabel, QLineEdit,
     QMainWindow, QPushButton, QSizePolicy, QWidget)
 
+from checks.input_check import user_enter_digit
+from functions.calculation_functions import parallelepiped_volume
+
 
 class Ui_volume_of_parallelepiped_Window(object):
     def setupUi(self, volume_of_parallelepiped_Window):
@@ -16,9 +19,12 @@ class Ui_volume_of_parallelepiped_Window(object):
         volume_of_parallelepiped_Window.resize(800, 486)
         self.centralwidget = QWidget(volume_of_parallelepiped_Window)
         self.centralwidget.setObjectName(u"centralwidget")
+
+        # RESULT FRAME #
         self.formLayoutWidget_2 = QWidget(self.centralwidget)
         self.formLayoutWidget_2.setObjectName(u"formLayoutWidget_2")
         self.formLayoutWidget_2.setGeometry(QRect(0, 390, 221, 91))
+
         self.result_frame = QFormLayout(self.formLayoutWidget_2)
         self.result_frame.setObjectName(u"result_frame")
         self.result_frame.setContentsMargins(20, 10, 30, 0)
@@ -36,17 +42,20 @@ class Ui_volume_of_parallelepiped_Window(object):
 
         self.result_frame.setWidget(1, QFormLayout.SpanningRole, self.result_text)
 
+        # INPUT FRAME #
         self.volume_of_parallelepiped_abel = QLabel(self.centralwidget)
         self.volume_of_parallelepiped_abel.setObjectName(u"volume_of_parallelepiped_abel")
         self.volume_of_parallelepiped_abel.setGeometry(QRect(10, 0, 781, 61))
         self.volume_of_parallelepiped_abel.setFont(font)
         self.volume_of_parallelepiped_abel.setWordWrap(True)
+
         self.formLayoutWidget = QWidget(self.centralwidget)
         self.formLayoutWidget.setObjectName(u"formLayoutWidget")
         self.formLayoutWidget.setGeometry(QRect(280, 120, 321, 221))
         self.input_frame = QFormLayout(self.formLayoutWidget)
         self.input_frame.setObjectName(u"input_frame")
         self.input_frame.setContentsMargins(20, 20, 30, 20)
+
         self.a_input = QLineEdit(self.formLayoutWidget)
         self.a_input.setObjectName(u"a_input")
         font1 = QFont()
@@ -92,6 +101,7 @@ class Ui_volume_of_parallelepiped_Window(object):
 
         self.input_frame.setWidget(2, QFormLayout.FieldRole, self.c_input)
 
+        # RESULT BUTTON #
         self.volume_of_parallelepiped_result_button = QPushButton(self.formLayoutWidget)
         self.volume_of_parallelepiped_result_button.setObjectName(u"volume_of_parallelepiped_result_button")
         font3 = QFont()
@@ -99,6 +109,8 @@ class Ui_volume_of_parallelepiped_Window(object):
         font3.setPointSize(14)
         font3.setBold(False)
         self.volume_of_parallelepiped_result_button.setFont(font3)
+
+        self.volume_of_parallelepiped_result_button.clicked.connect(self.get_result)
 
         self.input_frame.setWidget(3, QFormLayout.FieldRole, self.volume_of_parallelepiped_result_button)
 
@@ -113,6 +125,28 @@ class Ui_volume_of_parallelepiped_Window(object):
 
         QMetaObject.connectSlotsByName(volume_of_parallelepiped_Window)
     # setupUi
+
+    # Get result
+    def get_result(self):
+        a_text = self.a_input.text()
+        b_text = self.b_input.text()
+        c_text = self.c_input.text()
+
+        enter_digit = user_enter_digit(a_text, b_text, c_text)
+
+        print(a_text)
+        print(b_text)
+        print(c_text)
+
+        if not enter_digit:
+            result = str("Вы вводите некорректные данные, введите цифры")
+            self.a_input.setText(result)
+            self.b_input.setText(result)
+            self.c_input.setText(result)
+        else:
+            result = parallelepiped_volume(a=int(a_text), b=int(b_text), c=int(c_text))
+            print(result)
+            self.result_text.setText(str(result))
 
     def retranslateUi(self, volume_of_parallelepiped_Window):
         volume_of_parallelepiped_Window.setWindowTitle(QCoreApplication.translate("volume_of_parallelepiped_Window", u"MainWindow", None))
