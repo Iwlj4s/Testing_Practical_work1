@@ -32,7 +32,7 @@ class Ui_MainWindow(object):
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.setEnabled(True)
         MainWindow.setFixedSize(1085, 855)
-        MainWindow.setStyleSheet("font-size: 15px;")  # Применение стиля к главному окну
+        MainWindow.setStyleSheet("font-size: 14.5px;")  # Применение стиля к главному окну
 
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")

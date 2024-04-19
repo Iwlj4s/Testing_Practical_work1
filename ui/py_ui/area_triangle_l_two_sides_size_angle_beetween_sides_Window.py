@@ -24,6 +24,9 @@ class Ui_area_triangle_l_two_sides_size_angle_beetween_sides_Window(object):
         self.area_triangle_l_two_sides_size_angle_beetween_sides_label = QLabel(self.centralwidget)
         self.area_triangle_l_two_sides_size_angle_beetween_sides_label.setObjectName(u"area_triangle_l_two_sides_size_angle_beetween_sides_label")
         self.area_triangle_l_two_sides_size_angle_beetween_sides_label.setGeometry(QRect(10, 0, 791, 81))
+        self.area_triangle_l_two_sides_size_angle_beetween_sides_label.setText("Вычисление площади треугольника, если известны длины двух его сторон и величина угла между этими сторонами")
+        self.area_triangle_l_two_sides_size_angle_beetween_sides_label.setWordWrap(True)
+
         font = QFont()
         font.setFamilies([u"Source Code Pro"])
         font.setPointSize(12)
